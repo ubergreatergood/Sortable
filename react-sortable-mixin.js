@@ -3,6 +3,8 @@
  * @licence MIT
  */
 
+var ReactDOM = require('react-dom');
+
 (function (factory) {
 	'use strict';
 
@@ -16,6 +18,7 @@
 		/* jshint sub:true */
 		window['SortableMixin'] = factory(Sortable);
 	}
+
 })(function (/** Sortable */Sortable) {
 	'use strict';
 
@@ -140,7 +143,7 @@
 				}.bind(this);
 			}, this);
 
-			DOMNode = typeof this.getDOMNode === 'function' ? (this.refs[options.ref] || this).getDOMNode() : this.refs[options.ref] || this;
+			DOMNode = ReactDOM.findDOMNode(this);
 
 			/** @namespace this.refs — http://facebook.github.io/react/docs/more-about-refs.html */
 			this._sortableInstance = Sortable.create(DOMNode, copyOptions);
